@@ -7,6 +7,7 @@ import Root, {
 } from "./routes/root";
 import ErrorPage from "./error-page";
 import EditContact, { action as editAction } from "./routes/edit";
+import { action as deleteContact } from "./routes/destroy";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact, { loader as contactLoader } from "./routes/contact";
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         element: <EditContact />,
         action: editAction,
         loader: contactLoader,
+      },
+      {
+        path: "contacts/:contactId/destroy",
+        action: deleteContact,
       },
     ],
   },
